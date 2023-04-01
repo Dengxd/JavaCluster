@@ -137,6 +137,8 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
                 return goods; //直接返回
             }
             //缓存中没找到数据，恭喜你，你是第一个用户，
+            //下面的代码，查数据库，写缓存
+
             //接下来，还有一个读写锁在等着你
             //读取数据库，用读锁
             RReadWriteLock updateLock=redissonClient.getReadWriteLock(PREFIX_LOCK_UPDATE+id);
