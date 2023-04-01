@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+
+
+
+
+spring:
+
+  datasource:
+    # 驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      idle-timeout: 60000
+      max-lifetime: 200000
+      initialization-fail-timeout: 1000
+      minimum-idle: 5
+      maximum-pool-size: 10
+    url: jdbc:mysql://localhost:3306/cache?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=true&allowMultiQueries=true
+    username: root
+    password: root
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-not-delete-value: 1
+      logic-delete-value: 0
+      id-type: auto
+  mapper-locations: classpath*:/mapper/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.example.*.domain
+  configuration:
+    #控制台打印sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+
